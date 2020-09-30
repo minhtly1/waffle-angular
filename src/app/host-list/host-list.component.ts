@@ -24,4 +24,23 @@ export class HostListComponent implements OnInit {
     this.hosts = this.hostService.getHostsList();
   }
 
+  addHost(): void {
+    this.router.navigate(['add']);
+  }
+
+  deleteHost(id: number) {
+    this.hostService.deleteHost(id).subscribe(data => {
+      console.log(data);
+      this.reloadData();
+    },
+    error => console.log(error));
+  }
+
+  hostDetails(id: number) {
+    this.router.navigate(['details', id]);
+  }
+
+  updateHost(id: number) {
+    this.router.navigate(['update', id]);
+  }
 }

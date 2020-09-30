@@ -11,11 +11,24 @@ export class HostService {
 
   constructor(private http: HttpClient) { }
 
-  getHost(id: number): Observable<any> {
+  getHostById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   getHostsList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  createHost(host: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, host);
+  }
+
+  updateHost(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}`, value);
+  }
+
+  deleteHost(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }
+
 }

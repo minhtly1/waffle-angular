@@ -8,15 +8,27 @@
         <tr>
           <th>Firstname</th>
           <th>Lastname</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let host of hosts | async">
+        <tr *ngFor="let host of hosts | async" (click)="hostDetails(host.id)" style="cursor: pointer">
           <td>{{host.firstName}}</td>
           <td>{{host.lastName}}</td>
+          <td>
+              <button (click)="deleteHost(host.id)" class="btn btn-danger">Delete</button>
+              <button (click)="updateHost(host.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+              <button (click)="hostDetails(host.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
         </tr>
       </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="3" align="right"><button class="btn btn-success pull-right" (click)="addHost();">Add new host</button></td>
+      </tr>
+    </tfoot>
     </table>
   </div>
 </div>
+
 

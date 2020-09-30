@@ -1,0 +1,22 @@
+<h3>Create New Host</h3>
+<div [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="host.firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="host.lastName" name="lastName">
+    </div>
+
+
+    <button type="submit" class="btn btn-success" style="float: right">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newHost()">Add</button>
+</div>
